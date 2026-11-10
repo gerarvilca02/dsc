@@ -1,46 +1,45 @@
-# dsc
+# Laboratorio Banco LLM
 
-Repositorio base de los laboratorios del programa de **Data Science** (Credicorp × NTT DATA).
-Cada equipo trabaja en su propio fork y entrega cada laboratorio con un pull request.
+Entrega breve: un notebook, catálogo de campañas de 2 páginas, factura ficticia de 1 página y JSON de 20 clientes. Toda la data es sintética, incluidos comercios y productos.
 
-## Cómo empezar (una vez por equipo)
+## Ejecutar en VS Code
 
-1. El capitán del equipo hace **fork** de este repositorio en su cuenta personal de GitHub, sin cambiarle el nombre.
-   El portal detecta solo el fork `<capitan>/dsc`; no hay que registrar nada.
-2. El capitán agrega a sus compañeros como colaboradores del fork.
-3. Cada integrante clona el fork y trabaja ahí.
+1. Abre esta carpeta. Instala las extensiones Python y Jupyter, Python 3.11/3.12 y Azure CLI.
+2. En la terminal:
 
 ```bash
-git clone https://github.com/<capitan>/dsc.git
-cd dsc
+python -m venv .venv
 ```
 
-## Cómo entregar un laboratorio
+3. Activa el entorno:
 
-Cada laboratorio se entrega con un pull request del equipo. Basta con uno; si varios integrantes abren el suyo,
-cuentan todos los válidos. Cada PR sale de una rama con este nombre:
+Windows PowerShell:
 
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
-l<N>_DSC_<CÓDIGO>
-```
 
-- `<N>`: el número del laboratorio (`l1`, `l2`, …).
-- `<CÓDIGO>`: el código de participante de quien abre el PR (por ejemplo `01AA`).
-
-Ejemplo para el Laboratorio 1:
+macOS/Linux:
 
 ```bash
-git switch -c l1_DSC_01AA
-# … trabajo del laboratorio …
-git add -A
-git commit -m "feat: laboratorio 1"
-git push -u origin l1_DSC_01AA
+source .venv/bin/activate
 ```
 
-En GitHub, abre el PR **dentro del fork del equipo**, con base `main` y compare `l1_DSC_01AA`, listo para revisión
-(no en borrador). El portal lo detecta solo y lo valida contra la guía del laboratorio.
+4. Instala las dependencias y autentícate:
 
-## Estructura
+```bash
+python -m pip install -r requirements.txt
+az login
+```
 
-Cada laboratorio indica en su guía qué carpetas y archivos crear. Mantén el código y las notas del equipo en este
-repositorio; los datos, credenciales y archivos `.env` no se suben.
+5. Copia `.env.example` a `.env` y completa `DOCUMENT_INTELLIGENCE_ENDPOINT`, `CONTENT_SAFETY_ENDPOINT` y un `BLOCKLIST_NAME` exclusivo de tu equipo. No se utilizan API keys ni secretos. La identidad de Azure CLI debe tener permisos de datos en ambos recursos y permisos para administrar blocklists. Usa subdominios personalizados compatibles con Entra ID; ante 403, revisa RBAC y el tenant.
+6. Abre `Banco_LLM_Document_Intelligence_Content_Safety.ipynb`, selecciona `.venv` como kernel y ejecuta las celdas en orden.
+7. Si los términos recién registrados no coinciden todavía, espera hasta cinco minutos, repite C.5 y el checkpoint. Revisa los resultados y guarda el notebook con las salidas.
+
+## Resultado
+
+El notebook guarda en `resultados/<ejecucion>/` las respuestas originales de Azure, las pruebas de moderación, la blocklist, el JSON `campanas_para_ai_search.json`, el checkpoint y una reflexión basada en esa ejecución. El catálogo se transforma en dos documentos, uno por página; aún no se sube a AI Search.
+
+Las celdas cloud se entregan sin ejecutar. No se incluyen evidencias simuladas como si provinieran de Azure. Se comprobó localmente la estructura del notebook, la sintaxis del código y los documentos sintéticos.
+
+Para la entrega académica, conserva los datos y resultados de tu ejecución, guarda el notebook y presenta tu propio PR. La aprobación del instructor debe corresponder al SHA actual; no sustituye la evidencia de ejecución.

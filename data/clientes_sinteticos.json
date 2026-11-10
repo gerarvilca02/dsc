@@ -1,0 +1,590 @@
+[
+  {
+    "dni": "99000001",
+    "nombre_completo": "Lucía Varela Paredes",
+    "edad": 25,
+    "estado_civil": "soltero/a",
+    "cantidad_hijos": 0,
+    "hijos": [],
+    "categorias_favoritas": [
+      "Viajes",
+      "Escolaridad",
+      "Ropa"
+    ],
+    "subcategorias_favoritas": {
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000002",
+    "nombre_completo": "Diego Montes Luján",
+    "edad": 27,
+    "estado_civil": "casado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Restaurantes",
+      "Vehículos"
+    ],
+    "subcategorias_favoritas": {
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ],
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000003",
+    "nombre_completo": "Valeria Salazar Arce",
+    "edad": 29,
+    "estado_civil": "conviviente",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Escolaridad",
+      "Ropa",
+      "Viajes"
+    ],
+    "subcategorias_favoritas": {
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000004",
+    "nombre_completo": "Mateo Rivas Soto",
+    "edad": 31,
+    "estado_civil": "divorciado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Vehículos",
+      "Tecnología"
+    ],
+    "subcategorias_favoritas": {
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ],
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000005",
+    "nombre_completo": "Camila Varela Vega",
+    "edad": 33,
+    "estado_civil": "soltero/a",
+    "cantidad_hijos": 0,
+    "hijos": [],
+    "categorias_favoritas": [
+      "Ropa",
+      "Viajes",
+      "Escolaridad"
+    ],
+    "subcategorias_favoritas": {
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000006",
+    "nombre_completo": "Gabriel Montes Paredes",
+    "edad": 35,
+    "estado_civil": "casado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Tecnología",
+      "Restaurantes"
+    ],
+    "subcategorias_favoritas": {
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ],
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000007",
+    "nombre_completo": "Mariana Salazar Luján",
+    "edad": 37,
+    "estado_civil": "conviviente",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Viajes",
+      "Escolaridad",
+      "Ropa"
+    ],
+    "subcategorias_favoritas": {
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000008",
+    "nombre_completo": "Adrián Rivas Arce",
+    "edad": 39,
+    "estado_civil": "divorciado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Restaurantes",
+      "Vehículos"
+    ],
+    "subcategorias_favoritas": {
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ],
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000009",
+    "nombre_completo": "Paula Varela Soto",
+    "edad": 41,
+    "estado_civil": "soltero/a",
+    "cantidad_hijos": 0,
+    "hijos": [],
+    "categorias_favoritas": [
+      "Escolaridad",
+      "Ropa",
+      "Viajes"
+    ],
+    "subcategorias_favoritas": {
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000010",
+    "nombre_completo": "Joaquín Montes Vega",
+    "edad": 43,
+    "estado_civil": "casado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Vehículos",
+      "Tecnología"
+    ],
+    "subcategorias_favoritas": {
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ],
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000011",
+    "nombre_completo": "Daniela Salazar Paredes",
+    "edad": 45,
+    "estado_civil": "conviviente",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Ropa",
+      "Viajes",
+      "Escolaridad"
+    ],
+    "subcategorias_favoritas": {
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000012",
+    "nombre_completo": "Bruno Rivas Luján",
+    "edad": 47,
+    "estado_civil": "divorciado/a",
+    "cantidad_hijos": 1,
+    "hijos": [
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Tecnología",
+      "Restaurantes"
+    ],
+    "subcategorias_favoritas": {
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ],
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000013",
+    "nombre_completo": "Renata Varela Arce",
+    "edad": 49,
+    "estado_civil": "soltero/a",
+    "cantidad_hijos": 0,
+    "hijos": [],
+    "categorias_favoritas": [
+      "Viajes",
+      "Escolaridad",
+      "Ropa"
+    ],
+    "subcategorias_favoritas": {
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000014",
+    "nombre_completo": "Alonso Montes Soto",
+    "edad": 51,
+    "estado_civil": "casado/a",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Restaurantes",
+      "Vehículos"
+    ],
+    "subcategorias_favoritas": {
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ],
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000015",
+    "nombre_completo": "Natalia Salazar Vega",
+    "edad": 53,
+    "estado_civil": "conviviente",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Escolaridad",
+      "Ropa",
+      "Viajes"
+    ],
+    "subcategorias_favoritas": {
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000016",
+    "nombre_completo": "Emilio Rivas Paredes",
+    "edad": 55,
+    "estado_civil": "divorciado/a",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Vehículos",
+      "Tecnología"
+    ],
+    "subcategorias_favoritas": {
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ],
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000017",
+    "nombre_completo": "Andrea Varela Luján",
+    "edad": 57,
+    "estado_civil": "soltero/a",
+    "cantidad_hijos": 0,
+    "hijos": [],
+    "categorias_favoritas": [
+      "Ropa",
+      "Viajes",
+      "Escolaridad"
+    ],
+    "subcategorias_favoritas": {
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ],
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000018",
+    "nombre_completo": "Nicolás Montes Arce",
+    "edad": 59,
+    "estado_civil": "casado/a",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Tecnología",
+      "Restaurantes"
+    ],
+    "subcategorias_favoritas": {
+      "Tecnología": [
+        "Computadoras",
+        "Audio"
+      ],
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000019",
+    "nombre_completo": "Jimena Salazar Soto",
+    "edad": 61,
+    "estado_civil": "conviviente",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Viajes",
+      "Escolaridad",
+      "Ropa"
+    ],
+    "subcategorias_favoritas": {
+      "Viajes": [
+        "Hoteles",
+        "Buses"
+      ],
+      "Escolaridad": [
+        "Útiles",
+        "Mochilas"
+      ],
+      "Ropa": [
+        "Casual",
+        "Deportiva"
+      ]
+    },
+    "fuente_sintetica": true
+  },
+  {
+    "dni": "99000020",
+    "nombre_completo": "Sebastián Rivas Vega",
+    "edad": 63,
+    "estado_civil": "divorciado/a",
+    "cantidad_hijos": 2,
+    "hijos": [
+      {
+        "rango_edad": "mayor de edad"
+      },
+      {
+        "rango_edad": "menor de edad"
+      }
+    ],
+    "categorias_favoritas": [
+      "Restaurantes",
+      "Vehículos"
+    ],
+    "subcategorias_favoritas": {
+      "Restaurantes": [
+        "Criollos",
+        "Pastas"
+      ],
+      "Vehículos": [
+        "Gasolina",
+        "Accesorios de autos"
+      ]
+    },
+    "fuente_sintetica": true
+  }
+]
