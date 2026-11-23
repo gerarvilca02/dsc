@@ -2,48 +2,81 @@
 
 Proyecto Integrador · Laboratorio 3 · Grupo 1
 
-Banco LLM es un asistente que ayuda al equipo de Marketing a preparar correos promocionales personalizados. A partir del identificador interno de un cliente (`client_id`) y una fecha de campaña, el agente consulta sus preferencias, identifica promociones vigentes para las que es elegible y redacta tres alternativas de correo. Marketing elige una propuesta, puede editarla y decide si la guarda como borrador o aprueba su entrega en una bandeja de prueba.
+Banco LLM es el banco ficticio en el que se desarrolla este proyecto. Su equipo de Marketing utiliza un copiloto para preparar correos promocionales personalizados a partir de las campañas del banco y las preferencias de cada cliente.
 
-El proyecto utiliza datos sintéticos. La operación se realiza desde un notebook de Jupyter, con dos APIs locales y un agente construido con Microsoft Agent Framework.
+El flujo comienza cuando una persona de Marketing ingresa el identificador interno de un cliente (`client_id`) y una fecha. El agente consulta el perfil, busca promociones vigentes y prepara tres alternativas de correo. Marketing elige una, revisa el texto y decide si guarda un borrador o aprueba su entrega en una bandeja de prueba. Los clientes, comercios, campañas y documentos del laboratorio son sintéticos.
 
-## Cómo funciona el sistema
+## Flujo del sistema
 
-1. **Consulta del perfil.** El agente recibe el `client_id` y consulta la API de perfiles. Recupera los permisos de contacto y personalización, los productos del cliente, su segmento y sus tres categorías principales de afinidad, con dos subcategorías por cada una.
-2. **Selección de campañas.** El agente consulta la API de campañas con el mes, el año y las afinidades recuperadas. El sistema comprueba la vigencia de cada promoción y sus requisitos de edad, producto y segmento.
-3. **Redacción de propuestas.** El agente consulta el manual de comunicación mediante RAG y redacta tres alternativas. El asunto, la apertura y el llamado a la acción pueden variar. El comercio, el beneficio, la vigencia y las condiciones se incorporan desde la ficha comercial.
-4. **Selección y edición.** Marketing revisa las propuestas en el notebook, elige una y puede ajustar el texto. Con la versión elegida, el agente consulta la guía visual y genera un prompt que describe la imagen sugerida para el correo. La salida de esta etapa es una descripción textual.
-5. **Borrador o entrega.** Por defecto, el notebook guarda la propuesta seleccionada y su prompt visual como borrador. Si Marketing aprueba la entrega, el sistema vuelve a consultar los permisos del cliente y registra el correo en una bandeja local sintética.
+### 1. Marketing inicia una solicitud
 
-## Herramientas del agente
+El operador ingresa el `client_id` y la fecha para la que desea preparar la comunicación. El identificador permite consultar al cliente sin solicitar su DNI. La fecha determina qué catálogo mensual corresponde revisar y qué promociones están vigentes ese día.
 
-| Herramienta | Fuente | Función |
+El caso incluido en el notebook utiliza `CLI-1001` y el `22 de noviembre de 2026`.
+
+### 2. El agente consulta el perfil del cliente
+
+El agente invoca `consultar_perfil`. La API de perfiles devuelve el segmento, los productos, los permisos de contacto y personalización, y las tres categorías de mayor afinidad del cliente. Cada categoría contiene dos subcategorías que permiten precisar la búsqueda.
+
+Por ejemplo, el perfil de demostración incluye la categoría `Viajes` y las subcategorías `Hoteles` y `Vuelos internacionales`. Esta distinción permite buscar promociones específicas para esos intereses. Antes de preparar el correo, el sistema comprueba que el perfil autorice el contacto por correo y la personalización del texto.
+
+### 3. El agente identifica las campañas elegibles
+
+Con las afinidades recuperadas, el agente invoca `consultar_campanas`. Envía el mes, el año y las categorías con sus subcategorías. La API devuelve las fichas comerciales coincidentes y el sistema comprueba la vigencia, la edad, los productos y el segmento del cliente.
+
+En el caso de demostración, la búsqueda de `Viajes / Hoteles` en noviembre recupera la campaña `LLM-33` de Posada Demo Lumbre. Su ficha aporta el comercio, el beneficio, las fechas y las restricciones que deben aparecer en el correo. Si ninguna campaña cumple las condiciones del encargo, el flujo informa que no hay una promoción elegible.
+
+### 4. El agente consulta el manual y redacta tres correos
+
+Una vez identificadas las campañas, el agente invoca `buscar_directrices` para recuperar las reglas de comunicación de Banco LLM. El RAG consulta el manual institucional y devuelve los fragmentos pertinentes con su identificador y archivo de origen.
+
+El agente prepara tres alternativas de correo. Cada una contiene un asunto, un saludo, una apertura, el beneficio, las condiciones y un llamado a la acción. Las alternativas pueden presentar distintos enfoques para una misma campaña. Los términos comerciales se incorporan desde la ficha seleccionada para conservar los importes, topes y fechas publicados.
+
+### 5. Marketing selecciona una propuesta y se genera el prompt visual
+
+El operador revisa los tres correos, elige una alternativa y puede editar el asunto, la apertura y el llamado a la acción. Después de esa selección, el agente consulta la guía de dirección visual y redacta un prompt de imagen coherente con la campaña y con la versión elegida del correo.
+
+Por ejemplo, para una promoción de alojamiento, el prompt puede describir la llegada al vestíbulo de un hotel. Así, la escena representa el servicio ofrecido. Si el perfil permite personalización visual, el agente puede incorporar los atributos autorizados. En caso contrario, describe el producto o el ambiente. El resultado de esta etapa es el prompt textual.
+
+### 6. Marketing guarda el borrador o aprueba la entrega
+
+La decisión final corresponde al operador. El notebook permite dos resultados:
+
+| Decisión | Resultado |
+|---|---|
+| `APROBAR_ENVIO = False` | Guarda el correo seleccionado y su prompt visual en `resultados/borradores/<client_id>/`. |
+| `APROBAR_ENVIO = True` | Vuelve a consultar los permisos del cliente y, si continúan vigentes, registra el correo en `resultados/bandeja/<client_id>/`. |
+
+Ambos resultados se guardan como archivos JSON. La bandeja es local y simula la entrega para el laboratorio.
+
+## Herramientas y fuentes de información
+
+| Herramienta | Fuente | Pregunta que resuelve |
 |---|---|---|
-| `consultar_perfil` | API de perfiles, puerto `8001` | Recupera el perfil comercial autorizado y las afinidades del cliente a partir de su `client_id`. |
-| `consultar_campanas` | API de campañas, puerto `8002` | Busca promociones por periodo, categoría y subcategoría. Devuelve las fichas con sus beneficios y condiciones. |
-| `buscar_directrices` | ChromaDB local | Recupera fragmentos del manual de comunicación o de la guía visual para sustentar la redacción. |
+| `consultar_perfil` | API local de perfiles, puerto `8001` | ¿Qué intereses tiene este cliente y qué personalización autoriza? |
+| `consultar_campanas` | API local de campañas, puerto `8002` | ¿Qué promociones del periodo coinciden con sus afinidades y qué condiciones establece cada ficha? |
+| `buscar_directrices` | Manual de comunicación y guía visual indexados en ChromaDB | ¿Cómo debe redactarse el correo o describirse la imagen según las normas de Banco LLM? |
 
-El agente utiliza `gpt-5.6-luna` en Azure AI Foundry. El RAG divide los documentos por estructura: cada norma del manual y cada sección de la guía visual forman un fragmento. Microsoft Agent Framework genera los embeddings con `text-embedding-3-small`. ChromaDB almacena el texto, el vector y los metadatos de cada fragmento. La búsqueda utiliza distancia coseno y admite filtros por categoría documental (`comunicacion` o `visual`).
+El agente utiliza Microsoft Agent Framework y el deployment `gpt-5.6-luna` de Azure AI Foundry. Para el RAG, el notebook divide el manual por normas y la guía visual por secciones. Genera los embeddings con `text-embedding-3-small` y almacena los vectores, textos y metadatos en ChromaDB. La recuperación utiliza similitud coseno y admite filtros por categoría documental: `comunicacion` o `visual`.
 
 ## Archivos del proyecto
 
 | Archivo o carpeta | Contenido |
 |---|---|
-| `Banco_LLM_LAB3_GRUPO1.ipynb` | Construcción del índice, configuración del agente, pruebas y flujo de Marketing. |
-| `api_perfiles.py` | API que consulta los perfiles sintéticos por `client_id`. |
-| `api_campanas.py` | API que consulta el catálogo mensual de campañas. |
+| `Banco_LLM_LAB3_GRUPO1.ipynb` | Construcción del RAG, configuración del agente, pruebas y flujo completo de Marketing. |
+| `api_perfiles.py` | API que consulta un perfil por `client_id`. |
+| `api_campanas.py` | API que busca promociones en el catálogo mensual. |
 | `datos/perfiles/` | 24 perfiles sintéticos en JSON. |
-| `datos/campanas/` | 12 catálogos mensuales de campañas en Markdown. |
-| `conocimiento/` | Manual de comunicación en PDF y guía de dirección visual en Markdown. |
+| `datos/campanas/` | 12 catálogos mensuales de campañas. |
+| `conocimiento/` | Manual de comunicación en PDF y guía visual en Markdown. |
 | `instrucciones_agente.md` | Rol, alcance, restricciones y formato de respuesta del agente. |
 | `requirements.txt` | Dependencias del notebook y de las dos APIs. |
 
 ## Ejecución en VS Code
 
-Se requiere Python 3.12, Azure CLI y las extensiones Python y Jupyter de VS Code. Coloca el notebook y `requirements.txt` en la misma carpeta que los dos scripts de las APIs. Ejecuta los comandos desde esa carpeta.
-
 ### 1. Crear el entorno e instalar las dependencias
 
-En PowerShell:
+Abre la carpeta del proyecto en VS Code. Desde PowerShell, ejecuta:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -53,7 +86,7 @@ python -m pip install -r requirements.txt
 
 ### 2. Configurar Azure AI Foundry
 
-Crea un archivo `.env` junto al notebook o utiliza el archivo `env` del laboratorio. Configura el endpoint de tu recurso y los nombres de los deployments:
+Coloca el archivo `env` o `.env` junto al notebook y configura los valores del recurso:
 
 ```dotenv
 FOUNDRY_MODEL_ENDPOINT=https://TU-RECURSO.openai.azure.com/openai/v1/
@@ -61,40 +94,36 @@ FOUNDRY_MODEL_DEPLOYMENT=gpt-5.6-luna
 FOUNDRY_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 ```
 
-Inicia sesión con una cuenta que tenga acceso a ambos deployments. El notebook utiliza `DefaultAzureCredential` para autenticarse.
+Inicia sesión con una cuenta que tenga acceso a ambos deployments:
 
 ```powershell
 az login
 ```
 
-### 3. Iniciar las APIs en terminales separadas
+### 3. Levantar las dos APIs
 
-Terminal 1, API de perfiles:
+Abre dos terminales en la carpeta del proyecto y mantén ambas en ejecución.
+
+Terminal 1, perfiles:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 python api_perfiles.py
 ```
 
-Terminal 2, API de campañas:
+Terminal 2, campañas:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 python api_campanas.py
 ```
 
-Mantén ambas terminales abiertas mientras utilizas el notebook. Puedes comprobar el servicio de perfiles en `http://127.0.0.1:8001/perfiles/CLI-1001` y probar la API de campañas en `http://127.0.0.1:8002/docs`.
-
 ### 4. Ejecutar el notebook
 
-Abre `Banco_LLM_LAB3_GRUPO1.ipynb`, selecciona `.venv` como kernel y ejecuta las celdas en orden. El caso de demostración utiliza el cliente `CLI-1001` y la fecha `2026-11-22`.
+Abre `Banco_LLM_LAB3_GRUPO1.ipynb`, selecciona `.venv` como kernel y ejecuta las celdas en orden. En la sección 5 se muestran las herramientas invocadas y los tres correos generados. En la sección 6 puedes modificar `ALTERNATIVA` para elegir el correo y `APROBAR_ENVIO` para decidir su destino.
 
-En la sección 6, `ALTERNATIVA` permite elegir uno de los tres correos. Con `APROBAR_ENVIO = False`, el resultado se guarda en `resultados/borradores/`. Con `APROBAR_ENVIO = True`, la entrega aprobada queda registrada en `resultados/bandeja/`. Ambos directorios se organizan por cliente.
+## Validación del laboratorio
 
-## Pruebas y resultados
+Las pruebas cubren cada herramienta por separado, cada herramienta invocada por el agente y el uso conjunto de las tres en el flujo completo. La evaluación documental incluye una pregunta directa, una reformulada, una sobre otro fragmento, una con filtro y una cuya respuesta está ausente del corpus.
 
-El notebook prueba primero cada herramienta de forma independiente, luego registra una sola herramienta por agente y finalmente ejecuta el flujo con las tres herramientas habilitadas. La evaluación documental incluye cinco casos: pregunta directa, pregunta reformulada, consulta sobre otro fragmento, búsqueda con filtro y pregunta sin respuesta en los documentos.
-
-En la ejecución del laboratorio se verificaron las dos APIs, el índice, la recuperación directa y el flujo completo con las tres herramientas. En los cuatro casos documentales con respuesta disponible, el RAG recuperó el fragmento esperado y la evaluación de la respuesta fue parcial. La prueba aislada del agente con `buscar_directrices` quedó marcada para revisión. En el caso sin información disponible, el agente reconoció la falta de evidencia.
-
-La sección 7 muestra las respuestas, los fragmentos recuperados y la justificación de cada evaluación. La sección 8 presenta la tabla de herramientas y la evaluación de `Agent as a Tool`. La sección 9 reúne los resultados de la ejecución.
+En la ejecución presentada se verificaron las dos APIs, la indexación, la recuperación directa y el flujo completo con el agente. En las cuatro consultas documentales con respuesta disponible se recuperó el fragmento esperado, aunque las respuestas cumplieron parcialmente los criterios de contenido o citación. La prueba aislada del agente con `buscar_directrices` quedó marcada para revisión. Ante la pregunta sin respaldo documental, el agente reconoció que la información era insuficiente.
