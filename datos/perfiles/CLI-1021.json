@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1021",
+  "nombre_completo": "Vera del Llano",
+  "edad": 27,
+  "genero": "sin dato",
+  "estado_civil": "soltero/a",
+  "hijos": 0,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Deporte",
+        "Accesorios"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Panadería",
+        "Despensa"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Pastas",
+        "Criollos"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": false,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

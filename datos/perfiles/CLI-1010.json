@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1010",
+  "nombre_completo": "Joel del Monte",
+  "edad": 42,
+  "genero": "mujer",
+  "estado_civil": "casado/a",
+  "hijos": 2,
+  "segmento": "Preferente",
+  "productos": [
+    "Crédito Horizonte",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Cocina fusión",
+        "Pastas"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Útiles",
+        "Mochilas"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Frutas",
+        "Limpieza"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": false,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

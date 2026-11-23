@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1016",
+  "nombre_completo": "Pablo de la Cima",
+  "edad": 46,
+  "genero": "mujer",
+  "estado_civil": "conviviente",
+  "hijos": 1,
+  "segmento": "Preferente",
+  "productos": [
+    "Crédito Horizonte",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Teatro",
+        "Talleres"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Nikkei",
+        "Cocina fusión"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Accesorios",
+        "Casual"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

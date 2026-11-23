@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1022",
+  "nombre_completo": "Walter de la Ría",
+  "edad": 42,
+  "genero": "mujer",
+  "estado_civil": "casado/a",
+  "hijos": 2,
+  "segmento": "Preferente",
+  "productos": [
+    "Crédito Horizonte",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Vehículos",
+      "subcategorias": [
+        "Lavado",
+        "Gasolina"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Cine",
+        "Teatro"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Tecnología",
+      "subcategorias": [
+        "Computadoras",
+        "Smartphones"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

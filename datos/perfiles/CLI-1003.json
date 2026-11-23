@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1003",
+  "nombre_completo": "Celia del Olmo",
+  "edad": 60,
+  "genero": "sin dato",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Tecnología",
+      "subcategorias": [
+        "Audio",
+        "Computadoras"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Calzado",
+        "Deporte"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Talleres",
+        "Juegos"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1024",
+  "nombre_completo": "Yago del Mar",
+  "edad": 35,
+  "genero": "sin dato",
+  "estado_civil": "conviviente",
+  "hijos": 1,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Juegos",
+        "Cine"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Pastas",
+        "Criollos"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Calzado",
+        "Deporte"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

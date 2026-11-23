@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1020",
+  "nombre_completo": "Uriel del Roble",
+  "edad": 72,
+  "genero": "hombre",
+  "estado_civil": "conviviente",
+  "hijos": 1,
+  "segmento": "Esencial",
+  "productos": [
+    "Crédito Brisa",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Libros",
+        "Material artístico"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Vehículos",
+      "subcategorias": [
+        "Lavado",
+        "Gasolina"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Viajes",
+      "subcategorias": [
+        "Hoteles",
+        "Vuelos internacionales"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": false,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

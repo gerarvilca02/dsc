@@ -1,0 +1,44 @@
+{
+  "client_id": "CLI-1001",
+  "fecha_campana": "2026-11-22",
+  "estado": "borrador",
+  "numero": 2,
+  "correo": {
+    "campana_id": "LLM-33",
+    "asunto": "Tu próxima estadía empieza aquí",
+    "apertura": "Alma, Posada Demo Lumbre tiene una propuesta para tus viajes. Revisa el beneficio de la campaña antes de planificar tu estadía.",
+    "cta": "Consulta los detalles de esta campaña.",
+    "fuentes": [
+      "MAN-05",
+      "MAN-06",
+      "MAN-17"
+    ],
+    "cuerpo": "Hola, Alma.\n\nAlma, Posada Demo Lumbre tiene una propuesta para tus viajes. Revisa el beneficio de la campaña antes de planificar tu estadía.\n\nPosada Demo Lumbre · 20 % de descuento. Alojamiento estándar desde S/ 300. Ahorro máximo S/ 100. Alimentación y traslados excluidos.\nVigencia: 2026-11-01 al 2026-11-30. pago presencial en Perú.\nProductos participantes: Crédito Horizonte, Crédito Cumbre. Segmentos: Preferente, Patrimonial.\nuna por cliente adulto y campaña. No acumulable. cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad.\n\nConsulta los detalles de esta campaña."
+  },
+  "prompt_visual": "Fotografía editorial de una mujer ficticia de 34 años, viajera sola, en el vestíbulo de un hotel contemporáneo, revisando con entusiasmo la tarjeta de registro junto a una maleta de mano; vestimenta casual elegante y neutra, sin marcas visibles. Encuadre horizontal 3:2 a media distancia, acción principal ubicada en el tercio izquierdo, con el tercio derecho despejado y visualmente limpio para composición posterior; zona de seguridad alrededor del rostro y las manos. Iluminación natural suave de mañana entrando por ventanales, ambiente cálido, acogedor y sofisticado, profundidad de campo moderada, estilo fotográfico realista y premium. Excluir texto incrustado, nombres, logotipos de terceros, marcas visibles, gráficos similares a cupones, comprobantes legibles, información personal y elementos que sugieran alimentación o traslados.",
+  "fuentes_visuales": [
+    "VIS-07",
+    "VIS-01",
+    "VIS-03",
+    "VIS-02"
+  ],
+  "traza_visual": [
+    {
+      "tool": "buscar_directrices",
+      "pregunta": "Directrices visuales para generar un prompt fotográfico de correo de campaña de hotel/viajes, usando atributos visuales autorizados y especificando personajes o producto, acción, encuadre, iluminación y exclusiones.",
+      "categoria": "visual",
+      "ids": [
+        "VIS-07",
+        "VIS-01",
+        "VIS-03",
+        "VIS-02"
+      ],
+      "distancias": [
+        0.29986846446990967,
+        0.38454288244247437,
+        0.44452476501464844,
+        0.45932918787002563
+      ]
+    }
+  ]
+}

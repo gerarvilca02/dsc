@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1012",
+  "nombre_completo": "Leo de la Costa",
+  "edad": 35,
+  "genero": "sin dato",
+  "estado_civil": "conviviente",
+  "hijos": 1,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Material artístico",
+        "Útiles"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Vehículos",
+      "subcategorias": [
+        "Gasolina",
+        "Accesorios de autos"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Viajes",
+      "subcategorias": [
+        "Vuelos internacionales",
+        "Parques temáticos"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}
