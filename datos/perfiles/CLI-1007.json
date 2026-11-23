@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1007",
+  "nombre_completo": "Gala de la Vega",
+  "edad": 39,
+  "genero": "mujer",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Preferente",
+  "productos": [
+    "Crédito Horizonte",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Limpieza",
+        "Panadería"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Viajes",
+      "subcategorias": [
+        "Buses",
+        "Hoteles"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Útiles",
+        "Mochilas"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": false,
+    "personalizacion_texto": true,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

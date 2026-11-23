@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1002",
+  "nombre_completo": "Bruno de la Bruma",
+  "edad": 30,
+  "genero": "hombre",
+  "estado_civil": "casado/a",
+  "hijos": 2,
+  "segmento": "Esencial",
+  "productos": [
+    "Crédito Brisa",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Pastas",
+        "Criollos"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Mochilas",
+        "Libros"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Limpieza",
+        "Panadería"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

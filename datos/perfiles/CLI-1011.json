@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1011",
+  "nombre_completo": "Kiara del Bosque",
+  "edad": 57,
+  "genero": "hombre",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Esencial",
+  "productos": [
+    "Crédito Brisa",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Tecnología",
+      "subcategorias": [
+        "Periféricos",
+        "Audio"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Casual",
+        "Calzado"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Teatro",
+        "Talleres"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

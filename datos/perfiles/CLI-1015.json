@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1015",
+  "nombre_completo": "Olga del Pinar",
+  "edad": 60,
+  "genero": "sin dato",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Despensa",
+        "Frutas"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Viajes",
+      "subcategorias": [
+        "Vuelos internacionales",
+        "Parques temáticos"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Libros",
+        "Material artístico"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": false,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

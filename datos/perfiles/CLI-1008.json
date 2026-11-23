@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1008",
+  "nombre_completo": "Hugo del Río",
+  "edad": 72,
+  "genero": "hombre",
+  "estado_civil": "conviviente",
+  "hijos": 1,
+  "segmento": "Esencial",
+  "productos": [
+    "Crédito Brisa",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Talleres",
+        "Juegos"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Cocina fusión",
+        "Pastas"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Casual",
+        "Calzado"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

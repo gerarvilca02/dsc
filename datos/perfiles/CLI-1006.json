@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1006",
+  "nombre_completo": "Fabio del Valle",
+  "edad": 53,
+  "genero": "sin dato",
+  "estado_civil": "casado/a",
+  "hijos": 2,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Vehículos",
+      "subcategorias": [
+        "Accesorios de autos",
+        "Mantenimiento"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Talleres",
+        "Juegos"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Tecnología",
+      "subcategorias": [
+        "Periféricos",
+        "Audio"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

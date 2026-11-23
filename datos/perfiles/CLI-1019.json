@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1019",
+  "nombre_completo": "Tina del Campo",
+  "edad": 39,
+  "genero": "mujer",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Preferente",
+  "productos": [
+    "Crédito Horizonte",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Tecnología",
+      "subcategorias": [
+        "Smartphones",
+        "Periféricos"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Ropa",
+      "subcategorias": [
+        "Accesorios",
+        "Casual"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Entretenimiento",
+      "subcategorias": [
+        "Cine",
+        "Teatro"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

@@ -1,0 +1,53 @@
+{
+  "client_id": "CLI-1018",
+  "nombre_completo": "Saúl del Lago",
+  "edad": 53,
+  "genero": "sin dato",
+  "estado_civil": "casado/a",
+  "hijos": 2,
+  "segmento": "Patrimonial",
+  "productos": [
+    "Crédito Cumbre",
+    "Cuenta Ahorro"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Restaurantes",
+      "subcategorias": [
+        "Criollos",
+        "Nikkei"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Libros",
+        "Material artístico"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Panadería",
+        "Despensa"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": true,
+    "atributos_visuales": [
+      "edad",
+      "genero",
+      "estado_civil",
+      "hijos"
+    ]
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}

@@ -1,0 +1,839 @@
+{
+  "integracion": [
+    {
+      "prueba": "Perfil directo",
+      "ok": true,
+      "salida": {
+        "client_id": "CLI-1001",
+        "nombre_completo": "Alma del Viento",
+        "edad": 34,
+        "genero": "mujer",
+        "estado_civil": "soltero/a",
+        "hijos": 0,
+        "segmento": "Preferente",
+        "productos": [
+          "Crédito Horizonte",
+          "Cuenta Sueldo"
+        ],
+        "afinidades": [
+          {
+            "prioridad": 1,
+            "categoria": "Viajes",
+            "subcategorias": [
+              "Hoteles",
+              "Vuelos internacionales"
+            ]
+          },
+          {
+            "prioridad": 2,
+            "categoria": "Tecnología",
+            "subcategorias": [
+              "Computadoras",
+              "Smartphones"
+            ]
+          },
+          {
+            "prioridad": 3,
+            "categoria": "Vehículos",
+            "subcategorias": [
+              "Mantenimiento",
+              "Lavado"
+            ]
+          }
+        ],
+        "permisos": {
+          "contacto_correo": true,
+          "personalizacion_texto": true,
+          "personalizacion_visual": true,
+          "atributos_visuales": [
+            "edad",
+            "genero",
+            "estado_civil",
+            "hijos"
+          ]
+        },
+        "origen_afinidades": "Patrones de consumo simulados",
+        "fecha_corte": "2026-11-01",
+        "sintetico": true
+      }
+    },
+    {
+      "prueba": "Campañas directas",
+      "ok": true,
+      "salida": [
+        {
+          "id": "LLM-33",
+          "nombre": "Hoteles en Posada Demo Lumbre",
+          "fuente": "2026-11.md",
+          "Comercio": "Posada Demo Lumbre",
+          "Categoría": "Viajes",
+          "Subcategoría": "Hoteles",
+          "Beneficio": "20 % de descuento",
+          "Mecánica y restricciones": "Alojamiento estándar desde S/ 300. Ahorro máximo S/ 100. Alimentación y traslados excluidos.",
+          "Inicio": "2026-11-01",
+          "Fin": "2026-11-30",
+          "Productos elegibles": "Crédito Horizonte, Crédito Cumbre",
+          "Segmentos elegibles": "Preferente, Patrimonial",
+          "Canal y territorio": "pago presencial en Perú.",
+          "Aplicaciones": "una por cliente adulto y campaña. No acumulable.",
+          "Disponibilidad": "cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad."
+        }
+      ]
+    },
+    {
+      "prueba": "RAG directo",
+      "ok": true,
+      "comparacion": [
+        {
+          "filtro": "sin filtro",
+          "id": "VIS-01",
+          "fuente": "guia_visual.md",
+          "distancia": 0.29000377655029297
+        },
+        {
+          "filtro": "sin filtro",
+          "id": "MAN-06",
+          "fuente": "manual_comunicacion.pdf",
+          "distancia": 0.5075651407241821
+        },
+        {
+          "filtro": "sin filtro",
+          "id": "MAN-05",
+          "fuente": "manual_comunicacion.pdf",
+          "distancia": 0.5319288969039917
+        },
+        {
+          "filtro": "sin filtro",
+          "id": "VIS-07",
+          "fuente": "guia_visual.md",
+          "distancia": 0.5346848964691162
+        },
+        {
+          "filtro": "visual",
+          "id": "VIS-01",
+          "fuente": "guia_visual.md",
+          "distancia": 0.29000377655029297
+        },
+        {
+          "filtro": "visual",
+          "id": "VIS-07",
+          "fuente": "guia_visual.md",
+          "distancia": 0.5346848964691162
+        },
+        {
+          "filtro": "visual",
+          "id": "VIS-03",
+          "fuente": "guia_visual.md",
+          "distancia": 0.6426210403442383
+        },
+        {
+          "filtro": "visual",
+          "id": "VIS-06",
+          "fuente": "guia_visual.md",
+          "distancia": 0.6675446629524231
+        }
+      ]
+    },
+    {
+      "prueba": "Agente + consultar_perfil",
+      "ok": true,
+      "respuesta": "CAMPAÑA\n\nSegmento: **Preferente**\n\nTres categorías principales:\n1. **Viajes**\n2. **Tecnología**\n3. **Vehículos**",
+      "traza": [
+        {
+          "tool": "consultar_perfil",
+          "client_id": "CLI-1001",
+          "afinidades": 3
+        }
+      ]
+    },
+    {
+      "prueba": "Agente + consultar_campanas",
+      "ok": true,
+      "respuesta": "CAMPAÑA\n\n- **ID:** LLM-33  \n- **Comercio:** Posada Demo Lumbre  \n- **Beneficio publicado:** 20 % de descuento",
+      "traza": [
+        {
+          "tool": "consultar_campanas",
+          "mes": 11,
+          "anio": 2026,
+          "afinidades": [
+            {
+              "categoria": "Viajes",
+              "subcategorias": [
+                "Hoteles"
+              ]
+            }
+          ],
+          "ids": [
+            "LLM-33"
+          ]
+        }
+      ]
+    },
+    {
+      "prueba": "Agente + buscar_directrices",
+      "ok": false,
+      "respuesta": "DIRECTRIZ\n\nLa cabecera del correo debe tener una relación de aspecto horizontal de **3:2**. El **tercio derecho** de la imagen debe quedar libre para la composición posterior. [VIS-01, **guia_visual.md**]",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Qué relación de aspecto tiene la cabecera del correo y qué tercio de la imagen debe quedar libre?",
+          "categoria": "visual",
+          "ids": [
+            "VIS-01",
+            "VIS-07",
+            "VIS-03",
+            "VIS-06"
+          ],
+          "distancias": [
+            0.29000377655029297,
+            0.5346848964691162,
+            0.6426210403442383,
+            0.6675446629524231
+          ]
+        }
+      ]
+    },
+    {
+      "prueba": "Agente con los tres componentes",
+      "ok": true,
+      "encargo": {
+        "client_id": "CLI-1001",
+        "fecha": "2026-11-22",
+        "perfil": {
+          "client_id": "CLI-1001",
+          "nombre_de_pila": "Alma",
+          "segmento": "Preferente",
+          "productos": [
+            "Crédito Horizonte",
+            "Cuenta Sueldo"
+          ],
+          "afinidades": [
+            {
+              "prioridad": 1,
+              "categoria": "Viajes",
+              "subcategorias": [
+                "Hoteles",
+                "Vuelos internacionales"
+              ]
+            },
+            {
+              "prioridad": 2,
+              "categoria": "Tecnología",
+              "subcategorias": [
+                "Computadoras",
+                "Smartphones"
+              ]
+            },
+            {
+              "prioridad": 3,
+              "categoria": "Vehículos",
+              "subcategorias": [
+                "Mantenimiento",
+                "Lavado"
+              ]
+            }
+          ]
+        },
+        "fichas": {
+          "LLM-33": {
+            "id": "LLM-33",
+            "nombre": "Hoteles en Posada Demo Lumbre",
+            "fuente": "2026-11.md",
+            "Comercio": "Posada Demo Lumbre",
+            "Categoría": "Viajes",
+            "Subcategoría": "Hoteles",
+            "Beneficio": "20 % de descuento",
+            "Mecánica y restricciones": "Alojamiento estándar desde S/ 300. Ahorro máximo S/ 100. Alimentación y traslados excluidos.",
+            "Inicio": "2026-11-01",
+            "Fin": "2026-11-30",
+            "Productos elegibles": "Crédito Horizonte, Crédito Cumbre",
+            "Segmentos elegibles": "Preferente, Patrimonial",
+            "Canal y territorio": "pago presencial en Perú.",
+            "Aplicaciones": "una por cliente adulto y campaña. No acumulable.",
+            "Disponibilidad": "cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad."
+          },
+          "LLM-34": {
+            "id": "LLM-34",
+            "nombre": "Vuelos internacionales en Aerolínea Demo Cielo",
+            "fuente": "2026-11.md",
+            "Comercio": "Aerolínea Demo Cielo",
+            "Categoría": "Viajes",
+            "Subcategoría": "Vuelos internacionales",
+            "Beneficio": "15 % de descuento",
+            "Mecánica y restricciones": "Compra mínima S/ 800 y tope S/ 160. Solo tarifa base. Tasas y equipaje adicional excluidos.",
+            "Inicio": "2026-11-01",
+            "Fin": "2026-11-30",
+            "Productos elegibles": "Crédito Horizonte, Crédito Cumbre",
+            "Segmentos elegibles": "Preferente, Patrimonial",
+            "Canal y territorio": "pago presencial en Perú.",
+            "Aplicaciones": "una por cliente adulto y campaña. No acumulable.",
+            "Disponibilidad": "cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad."
+          }
+        },
+        "fuentes": {
+          "MAN-17": {
+            "pagina": 19,
+            "fuente": "manual_comunicacion.pdf",
+            "numero_chunk": 17,
+            "version": "1.0",
+            "tipo_documento": "manual",
+            "titulo": "Llamado a la acción",
+            "categoria": "comunicacion"
+          },
+          "MAN-06": {
+            "titulo": "Estructura del correo",
+            "version": "1.0",
+            "fuente": "manual_comunicacion.pdf",
+            "pagina": 8,
+            "numero_chunk": 6,
+            "categoria": "comunicacion",
+            "tipo_documento": "manual"
+          },
+          "MAN-05": {
+            "tipo_documento": "manual",
+            "numero_chunk": 5,
+            "pagina": 7,
+            "categoria": "comunicacion",
+            "titulo": "Asunto y preencabezado",
+            "version": "1.0",
+            "fuente": "manual_comunicacion.pdf"
+          },
+          "MAN-20": {
+            "version": "1.0",
+            "categoria": "comunicacion",
+            "pagina": 22,
+            "fuente": "manual_comunicacion.pdf",
+            "tipo_documento": "manual",
+            "titulo": "Aprobación y trazabilidad",
+            "numero_chunk": 20
+          }
+        },
+        "correos": [
+          {
+            "campana_id": "LLM-33",
+            "asunto": "Una pausa especial en Posada Demo Lumbre",
+            "apertura": "Alma, descubre una propuesta para disfrutar tu próxima estadía en Posada Demo Lumbre. Conoce el beneficio de la campaña y sus condiciones.",
+            "cta": "Consulta las condiciones de la campaña.",
+            "fuentes": [
+              "MAN-05",
+              "MAN-06",
+              "MAN-17"
+            ],
+            "cuerpo": "Hola, Alma.\n\nAlma, descubre una propuesta para disfrutar tu próxima estadía en Posada Demo Lumbre. Conoce el beneficio de la campaña y sus condiciones.\n\nPosada Demo Lumbre · 20 % de descuento. Alojamiento estándar desde S/ 300. Ahorro máximo S/ 100. Alimentación y traslados excluidos.\nVigencia: 2026-11-01 al 2026-11-30. pago presencial en Perú.\nProductos participantes: Crédito Horizonte, Crédito Cumbre. Segmentos: Preferente, Patrimonial.\nuna por cliente adulto y campaña. No acumulable. cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad.\n\nConsulta las condiciones de la campaña."
+          },
+          {
+            "campana_id": "LLM-33",
+            "asunto": "Tu próxima estadía empieza aquí",
+            "apertura": "Alma, Posada Demo Lumbre tiene una propuesta para tus viajes. Revisa el beneficio de la campaña antes de planificar tu estadía.",
+            "cta": "Consulta las condiciones de la campaña.",
+            "fuentes": [
+              "MAN-05",
+              "MAN-06",
+              "MAN-17"
+            ],
+            "cuerpo": "Hola, Alma.\n\nAlma, Posada Demo Lumbre tiene una propuesta para tus viajes. Revisa el beneficio de la campaña antes de planificar tu estadía.\n\nPosada Demo Lumbre · 20 % de descuento. Alojamiento estándar desde S/ 300. Ahorro máximo S/ 100. Alimentación y traslados excluidos.\nVigencia: 2026-11-01 al 2026-11-30. pago presencial en Perú.\nProductos participantes: Crédito Horizonte, Crédito Cumbre. Segmentos: Preferente, Patrimonial.\nuna por cliente adulto y campaña. No acumulable. cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad.\n\nConsulta las condiciones de la campaña."
+          },
+          {
+            "campana_id": "LLM-34",
+            "asunto": "Una nueva forma de planificar tus viajes",
+            "apertura": "Alma, Aerolínea Demo Cielo te invita a conocer una propuesta para tus vuelos internacionales. Descubre el beneficio de la campaña y sus condiciones.",
+            "cta": "Consulta las condiciones de la campaña.",
+            "fuentes": [
+              "MAN-05",
+              "MAN-06",
+              "MAN-17"
+            ],
+            "cuerpo": "Hola, Alma.\n\nAlma, Aerolínea Demo Cielo te invita a conocer una propuesta para tus vuelos internacionales. Descubre el beneficio de la campaña y sus condiciones.\n\nAerolínea Demo Cielo · 15 % de descuento. Compra mínima S/ 800 y tope S/ 160. Solo tarifa base. Tasas y equipaje adicional excluidos.\nVigencia: 2026-11-01 al 2026-11-30. pago presencial en Perú.\nProductos participantes: Crédito Horizonte, Crédito Cumbre. Segmentos: Preferente, Patrimonial.\nuna por cliente adulto y campaña. No acumulable. cupo total sintético de 100 beneficios por campaña, sujeto a disponibilidad.\n\nConsulta las condiciones de la campaña."
+          }
+        ],
+        "traza": [
+          {
+            "tool": "consultar_perfil",
+            "client_id": "CLI-1001",
+            "afinidades": 3
+          },
+          {
+            "tool": "consultar_campanas",
+            "mes": 11,
+            "anio": 2026,
+            "afinidades": [
+              {
+                "categoria": "Viajes",
+                "subcategorias": [
+                  "Hoteles",
+                  "Vuelos internacionales"
+                ]
+              },
+              {
+                "categoria": "Tecnología",
+                "subcategorias": [
+                  "Computadoras",
+                  "Smartphones"
+                ]
+              },
+              {
+                "categoria": "Vehículos",
+                "subcategorias": [
+                  "Mantenimiento",
+                  "Lavado"
+                ]
+              }
+            ],
+            "ids": [
+              "LLM-33",
+              "LLM-34"
+            ]
+          },
+          {
+            "tool": "buscar_directrices",
+            "pregunta": "Redacción de correos de campañas de tarjetas: asunto, apertura, llamado a la acción, tono editorial y restricciones para textos sin cifras ni promesas comerciales.",
+            "categoria": "comunicacion",
+            "ids": [
+              "MAN-17",
+              "MAN-06",
+              "MAN-05",
+              "MAN-20"
+            ],
+            "distancias": [
+              0.26229822635650635,
+              0.2896210551261902,
+              0.33545738458633423,
+              0.3626290559768677
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prueba": "Flujo completo",
+      "ok": true,
+      "archivo": "resultados\\borradores\\CLI-1001\\2026-11-22_fa0c4412580a33f6.json"
+    }
+  ],
+  "documentales": [
+    {
+      "caso": "Directa",
+      "pregunta": "¿Cuántos caracteres, incluidos los espacios, admite como máximo el asunto comercial?",
+      "filtro": null,
+      "fragmentos": [
+        {
+          "id": "MAN-05",
+          "text": "Asunto y preencabezado\nCriterio institucional\nEl asunto comercial admite hasta 55 caracteres, incluidos espacios. El preencabezado\nadmite hasta 90 caracteres, incluidos espacios. Cada uno debe aportar información\ndistinta.\nAplicación en el correo\nAbre con el producto o la ocasión. Si el porcentaje depende de un máximo, el cuerpo\ndebe indicar el tope con claridad. Evita urgencia artificial y promesas incondicionales.\nCaso de Marketing\nMarketing presenta una campaña gastronómica. La primera versión repite el nombre del\ncomercio en ambos campos y deja la mecánica para el final.\nRedacción de referencia\nAsunto: Una invitación para compartir pastas. Preencabezado: Conoce los platos\nincluidos y cómo se aplica el beneficio.\nControl de aprobación\nCuenta letras, espacios y signos antes de publicar. Si no cabe una condición decisiva,\nreduce la frase comercial y amplía el detalle en el cuerpo.",
+          "metadata": {
+            "pagina": 7,
+            "version": "1.0",
+            "titulo": "Asunto y preencabezado",
+            "categoria": "comunicacion",
+            "fuente": "manual_comunicacion.pdf",
+            "numero_chunk": 5,
+            "tipo_documento": "manual"
+          },
+          "distancia": 0.3154333829879761
+        },
+        {
+          "id": "MAN-03",
+          "text": "Tono por segmento\nCriterio institucional\nPara el segmento Esencial, usa lenguaje cotidiano y explica la mecánica en una frase. En\nPreferente, prioriza el ahorro y las condiciones. En Patrimonial, adopta un tono sobrio y\npreciso.\nAplicación en el correo\nEl segmento orienta la redacción. Solo menciona exclusividad cuando la ficha comercial\nespecifique el segmento elegible y permita esa expresión. Una tarjeta de mayor\ncategoría tampoco garantiza un cupo.\nCaso de Marketing\nTres clientes con segmentos distintos califican para la misma oferta. La promoción\nconserva el mismo beneficio para los tres.\nRedacción de referencia\nEsencial: «Así funciona el descuento». Preferente: «Revisa el ahorro y su tope».\nPatrimonial: «Consulte los detalles de la campaña».\nControl de aprobación\nComprueba que la adaptación de tono no cambie vigencia, beneficio o disponibilidad.",
+          "metadata": {
+            "categoria": "comunicacion",
+            "fuente": "manual_comunicacion.pdf",
+            "pagina": 5,
+            "titulo": "Tono por segmento",
+            "tipo_documento": "manual",
+            "version": "1.0",
+            "numero_chunk": 3
+          },
+          "distancia": 0.48291367292404175
+        },
+        {
+          "id": "MAN-06",
+          "text": "Estructura del correo\nCriterio institucional\nOrdena el correo en asunto, saludo, propuesta, condiciones y llamada a la acción. El\nprimer párrafo debe identificar el comercio y el beneficio. Usa un solo llamado principal a\nla acción.\nAplicación en el correo\nCuando el usuario pide tres propuestas, redacta tres alternativas autónomas. Cada una\nconserva todas las condiciones esenciales para poder aprobarse por separado.\nCaso de Marketing\nUna campaña de útiles escolares se presenta por ocasión, por ahorro o por comercio. Las\ntres versiones deben conservar la compra mínima y la vigencia.\nRedacción de referencia\nAsunto: Prepara tus útiles de este mes. Saludo: Hola, Alex. Propuesta: Presenta el\nahorro autorizado. Cierre: Consulta las condiciones de la campaña.\nControl de aprobación\nRechaza borradores que dependan de leer otra alternativa para conocer el mínimo de\ncompra o la tarjeta aplicable.",
+          "metadata": {
+            "fuente": "manual_comunicacion.pdf",
+            "tipo_documento": "manual",
+            "numero_chunk": 6,
+            "categoria": "comunicacion",
+            "titulo": "Estructura del correo",
+            "pagina": 8,
+            "version": "1.0"
+          },
+          "distancia": 0.5088444352149963
+        },
+        {
+          "id": "MAN-18",
+          "text": "Combinación de promociones\nCriterio institucional\nReúne beneficios en una propuesta solo si cada uno conserva su comercio, fechas,\ncondiciones y fuente. Explica la no acumulación cuando corresponda.\nAplicación en el correo\nEn un correo con dos ofertas se recomienda un bloque independiente por cada una. Si no\nhay espacio para las condiciones mínimas, prepara versiones separadas.\nCaso de Marketing\nUna campaña de ropa y otra de audio comparten segmento y mes. Los topes de ahorro y\nlos mínimos de compra difieren.\nRedacción de referencia\nEstructura sugerida: primero el beneficio de ropa con sus condiciones, luego la\noferta de audio y sus propias restricciones.\nControl de aprobación\nRevisa que el porcentaje más alto no quede asociado al comercio equivocado y que un\núnico tope no se interprete como compartido.",
+          "metadata": {
+            "categoria": "comunicacion",
+            "numero_chunk": 18,
+            "pagina": 20,
+            "titulo": "Combinación de promociones",
+            "fuente": "manual_comunicacion.pdf",
+            "tipo_documento": "manual",
+            "version": "1.0"
+          },
+          "distancia": 0.5316302180290222
+        }
+      ],
+      "respuesta": "DIRECTRIZ\n\nEl asunto comercial admite como máximo **55 caracteres, incluidos los espacios**. [MAN-05, manual_comunicacion.pdf]",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Cuántos caracteres, incluidos los espacios, admite como máximo el asunto comercial?",
+          "categoria": null,
+          "ids": [
+            "MAN-05",
+            "MAN-03",
+            "MAN-06",
+            "MAN-18"
+          ],
+          "distancias": [
+            0.3154333829879761,
+            0.48291367292404175,
+            0.5088444352149963,
+            0.5316302180290222
+          ]
+        }
+      ],
+      "evaluacion": "parcial",
+      "justificacion": "Coinciden 2/2 criterios de contenido. Revisar la respuesta y su cita.",
+      "objetivo": "MAN-05"
+    },
+    {
+      "caso": "Reformulada",
+      "pregunta": "Al redactar la línea que verá primero el destinatario en su bandeja, ¿cuál es el límite contando también los blancos?",
+      "filtro": null,
+      "fragmentos": [
+        {
+          "id": "MAN-05",
+          "text": "Asunto y preencabezado\nCriterio institucional\nEl asunto comercial admite hasta 55 caracteres, incluidos espacios. El preencabezado\nadmite hasta 90 caracteres, incluidos espacios. Cada uno debe aportar información\ndistinta.\nAplicación en el correo\nAbre con el producto o la ocasión. Si el porcentaje depende de un máximo, el cuerpo\ndebe indicar el tope con claridad. Evita urgencia artificial y promesas incondicionales.\nCaso de Marketing\nMarketing presenta una campaña gastronómica. La primera versión repite el nombre del\ncomercio en ambos campos y deja la mecánica para el final.\nRedacción de referencia\nAsunto: Una invitación para compartir pastas. Preencabezado: Conoce los platos\nincluidos y cómo se aplica el beneficio.\nControl de aprobación\nCuenta letras, espacios y signos antes de publicar. Si no cabe una condición decisiva,\nreduce la frase comercial y amplía el detalle en el cuerpo.",
+          "metadata": {
+            "pagina": 7,
+            "numero_chunk": 5,
+            "fuente": "manual_comunicacion.pdf",
+            "tipo_documento": "manual",
+            "version": "1.0",
+            "titulo": "Asunto y preencabezado",
+            "categoria": "comunicacion"
+          },
+          "distancia": 0.4162057042121887
+        },
+        {
+          "id": "VIS-01",
+          "text": "Encuadre para correo\nEl formato horizontal de cabecera es 3:2. Reserva el tercio derecho como espacio libre para composición posterior. Ubica la acción principal en el tercio izquierdo y conserva una zona de seguridad alrededor de manos y rostros. La entrega de Marketing es un prompt textual. Evita texto incrustado, logotipos de terceros y gráficos que puedan confundirse con un cupón canjeable.",
+          "metadata": {
+            "version": "1.0",
+            "fuente": "guia_visual.md",
+            "titulo": "Encuadre para correo",
+            "categoria": "visual",
+            "numero_chunk": 1,
+            "tipo_documento": "guia"
+          },
+          "distancia": 0.4753416180610657
+        },
+        {
+          "id": "MAN-06",
+          "text": "Estructura del correo\nCriterio institucional\nOrdena el correo en asunto, saludo, propuesta, condiciones y llamada a la acción. El\nprimer párrafo debe identificar el comercio y el beneficio. Usa un solo llamado principal a\nla acción.\nAplicación en el correo\nCuando el usuario pide tres propuestas, redacta tres alternativas autónomas. Cada una\nconserva todas las condiciones esenciales para poder aprobarse por separado.\nCaso de Marketing\nUna campaña de útiles escolares se presenta por ocasión, por ahorro o por comercio. Las\ntres versiones deben conservar la compra mínima y la vigencia.\nRedacción de referencia\nAsunto: Prepara tus útiles de este mes. Saludo: Hola, Alex. Propuesta: Presenta el\nahorro autorizado. Cierre: Consulta las condiciones de la campaña.\nControl de aprobación\nRechaza borradores que dependan de leer otra alternativa para conocer el mínimo de\ncompra o la tarjeta aplicable.",
+          "metadata": {
+            "fuente": "manual_comunicacion.pdf",
+            "titulo": "Estructura del correo",
+            "numero_chunk": 6,
+            "categoria": "comunicacion",
+            "pagina": 8,
+            "tipo_documento": "manual",
+            "version": "1.0"
+          },
+          "distancia": 0.5404295921325684
+        },
+        {
+          "id": "MAN-01",
+          "text": "Permiso para personalizar\nCriterio institucional\nUsa únicamente los campos autorizados para la finalidad indicada en el perfil. Separa\nautorización de contacto, personalización del texto y personalización visual. Una\nautorización desconocida requiere revisión de Marketing.\nAplicación en el correo\nPara un encargo sin permiso de personalización puede prepararse una pieza general de\nmuestra. Guarda el identificador solo en la ficha interna. Antes de cualquier envío,\nMarketing debe confirmar la autorización de contacto y el canal.\nCaso de Marketing\nUna clienta tiene autorización para texto comercial y el canal correo, pero su ficha no\nhabilita el uso de la composición familiar en piezas visuales.\nRedacción de referencia\nAsunto sugerido: Una opción para tu próxima escapada. La escena puede mostrar\nuna maleta junto a la ventana del tren.\nControl de aprobación\nComprueba cada atributo contra la finalidad. Si la autorización visual falta, conserva\núnicamente objetos, entorno y actividad de la campaña.",
+          "metadata": {
+            "pagina": 3,
+            "numero_chunk": 1,
+            "version": "1.0",
+            "tipo_documento": "manual",
+            "fuente": "manual_comunicacion.pdf",
+            "categoria": "comunicacion",
+            "titulo": "Permiso para personalizar"
+          },
+          "distancia": 0.5637019276618958
+        }
+      ],
+      "respuesta": "DIRECTRIZ\n\nEl **asunto comercial** admite hasta **55 caracteres**, incluidos los espacios. El **preencabezado** admite hasta **90 caracteres**, incluidos los espacios. [MAN-05, manual_comunicacion.pdf]",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Cuál es el límite de caracteres, contando también los espacios en blanco, para la línea que verá primero el destinatario en su bandeja de entrada (asunto o preencabezado)?",
+          "categoria": null,
+          "ids": [
+            "MAN-05",
+            "VIS-01",
+            "MAN-06",
+            "MAN-01"
+          ],
+          "distancias": [
+            0.4162057042121887,
+            0.4753416180610657,
+            0.5404295921325684,
+            0.5637019276618958
+          ]
+        }
+      ],
+      "evaluacion": "parcial",
+      "justificacion": "Coinciden 2/2 criterios de contenido. Revisar la respuesta y su cita.",
+      "objetivo": "MAN-05"
+    },
+    {
+      "caso": "Otro chunk",
+      "pregunta": "¿Quién aprueba la versión antes del envío y qué cambios obligan a cotejarla otra vez con la ficha comercial?",
+      "filtro": null,
+      "fragmentos": [
+        {
+          "id": "MAN-20",
+          "text": "Aprobación y trazabilidad\nCriterio institucional\nMarketing selecciona una de las tres propuestas, revisa sus condiciones y aprueba la\nversión antes de su envío. Los cambios de importe, comercio o plazo requieren un nuevo\ncotejo con la ficha.\nAplicación en el correo\nRegistra versión del borrador, fuente de la oferta, directriz editorial y decisión de\nrevisión. Las atribuciones documentales son internas y se distinguen del cuerpo dirigido\nal cliente.\nCaso de Marketing\nUna revisión cambia el asunto y acorta el cuerpo. Al hacerlo desaparece la restricción de\ncompra presencial. Marketing devuelve el texto para corregirlo.\nRedacción de referencia\nRegistro sugerido: borrador B, campaña seleccionada, condición repuesta, versión\nlista para revisión de Marketing.\nControl de aprobación\nAntes de aprobar, confirma que la selección visual corresponde al correo elegido y que\ntodos los materiales pertenecen a la misma campaña.",
+          "metadata": {
+            "version": "1.0",
+            "categoria": "comunicacion",
+            "tipo_documento": "manual",
+            "numero_chunk": 20,
+            "pagina": 22,
+            "titulo": "Aprobación y trazabilidad",
+            "fuente": "manual_comunicacion.pdf"
+          },
+          "distancia": 0.3634282350540161
+        },
+        {
+          "id": "MAN-11",
+          "text": "Vigencia, cupos y canal\nCriterio institucional\nPublica fechas de inicio y fin, canal y territorio tal como constan en la ficha. Un cupo\ngeneral expresa un límite de campaña y no garantiza disponibilidad individual.\nAplicación en el correo\nPara campañas próximas a terminar, valida la fecha del encargo y revisa la vigencia al\naprobar el correo. Evita expresiones relativas si podrían leerse después del cierre.\nCaso de Marketing\nUn correo previsto para noviembre llega a revisión el último día del mes. La ficha fija\npago presencial y vencimiento ese día.\nRedacción de referencia\nTexto sugerido: Consulta las condiciones para compras presenciales realizadas\nhasta la fecha indicada en la ficha.\nControl de aprobación\nSi la campaña caducó, detén su publicación y pide una ficha vigente. La existencia de un\nborrador anterior no extiende el beneficio.",
+          "metadata": {
+            "version": "1.0",
+            "fuente": "manual_comunicacion.pdf",
+            "pagina": 13,
+            "titulo": "Vigencia, cupos y canal",
+            "numero_chunk": 11,
+            "tipo_documento": "manual",
+            "categoria": "comunicacion"
+          },
+          "distancia": 0.5148472189903259
+        },
+        {
+          "id": "MAN-05",
+          "text": "Asunto y preencabezado\nCriterio institucional\nEl asunto comercial admite hasta 55 caracteres, incluidos espacios. El preencabezado\nadmite hasta 90 caracteres, incluidos espacios. Cada uno debe aportar información\ndistinta.\nAplicación en el correo\nAbre con el producto o la ocasión. Si el porcentaje depende de un máximo, el cuerpo\ndebe indicar el tope con claridad. Evita urgencia artificial y promesas incondicionales.\nCaso de Marketing\nMarketing presenta una campaña gastronómica. La primera versión repite el nombre del\ncomercio en ambos campos y deja la mecánica para el final.\nRedacción de referencia\nAsunto: Una invitación para compartir pastas. Preencabezado: Conoce los platos\nincluidos y cómo se aplica el beneficio.\nControl de aprobación\nCuenta letras, espacios y signos antes de publicar. Si no cabe una condición decisiva,\nreduce la frase comercial y amplía el detalle en el cuerpo.",
+          "metadata": {
+            "categoria": "comunicacion",
+            "titulo": "Asunto y preencabezado",
+            "version": "1.0",
+            "tipo_documento": "manual",
+            "fuente": "manual_comunicacion.pdf",
+            "numero_chunk": 5,
+            "pagina": 7
+          },
+          "distancia": 0.5276591777801514
+        },
+        {
+          "id": "MAN-07",
+          "text": "Descuentos porcentuales\nCriterio institucional\nPresenta porcentaje, base de cálculo, compra mínima y ahorro máximo en el mismo\nbloque. Cuando la ficha establece un tope, evita presentar el porcentaje como ahorro sin\nlímites.\nAplicación en el correo\nSi se muestra un ejemplo numérico, verifica primero el mínimo y aplica el menor entre el\ndescuento calculado y el tope. Precisa que el importe ilustra una compra que cumple la\nficha.\nCaso de Marketing\nEjemplo editorial sintético: descuento del 30 %, compra mínima de S/ 100 y ahorro\nmáximo de S/ 60. En una compra de S/ 250 el cálculo inicial da S/ 75.\nRedacción de referencia\nTexto sugerido: Para una compra elegible de S/ 250, el ahorro sería S/ 60 por el\ntope de la campaña.\nControl de aprobación\nComprueba que el ejemplo editorial no se reutilice como oferta vigente. La cifra\ncomercial siempre procede de la ficha seleccionada.",
+          "metadata": {
+            "titulo": "Descuentos porcentuales",
+            "pagina": 9,
+            "version": "1.0",
+            "fuente": "manual_comunicacion.pdf",
+            "numero_chunk": 7,
+            "categoria": "comunicacion",
+            "tipo_documento": "manual"
+          },
+          "distancia": 0.5356791019439697
+        }
+      ],
+      "respuesta": "DIRECTRIZ\n\nMarketing aprueba la versión antes de su envío. Los cambios de **importe, comercio o plazo** obligan a realizar un nuevo cotejo con la ficha comercial [MAN-20, manual_comunicacion.pdf].",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Quién aprueba la versión antes del envío y qué cambios obligan a cotejarla otra vez con la ficha comercial?",
+          "categoria": null,
+          "ids": [
+            "MAN-20",
+            "MAN-11",
+            "MAN-05",
+            "MAN-07"
+          ],
+          "distancias": [
+            0.3634282350540161,
+            0.5148472189903259,
+            0.5276591777801514,
+            0.5356791019439697
+          ]
+        }
+      ],
+      "evaluacion": "parcial",
+      "justificacion": "Coinciden 4/4 criterios de contenido. Revisar la respuesta y su cita.",
+      "objetivo": "MAN-20"
+    },
+    {
+      "caso": "Con filtro",
+      "pregunta": "¿Qué relación de aspecto tiene la cabecera del correo y qué tercio queda libre?",
+      "filtro": "visual",
+      "fragmentos": [
+        {
+          "id": "VIS-01",
+          "text": "Encuadre para correo\nEl formato horizontal de cabecera es 3:2. Reserva el tercio derecho como espacio libre para composición posterior. Ubica la acción principal en el tercio izquierdo y conserva una zona de seguridad alrededor de manos y rostros. La entrega de Marketing es un prompt textual. Evita texto incrustado, logotipos de terceros y gráficos que puedan confundirse con un cupón canjeable.",
+          "metadata": {
+            "version": "1.0",
+            "numero_chunk": 1,
+            "fuente": "guia_visual.md",
+            "titulo": "Encuadre para correo",
+            "tipo_documento": "guia",
+            "categoria": "visual"
+          },
+          "distancia": 0.3215458393096924
+        },
+        {
+          "id": "VIS-07",
+          "text": "Entrega del prompt seleccionado\nEl prompt visual se prepara después de que Marketing seleccione una de las tres propuestas de correo. Describe personajes autorizados o una escena sin personas, acción, vestimenta si aplica, entorno, encuadre, iluminación, estilo fotográfico y restricciones. Entrega solo texto revisable. La aprobación del correo y la generación posterior de cualquier pieza visual son decisiones independientes.",
+          "metadata": {
+            "categoria": "visual",
+            "version": "1.0",
+            "titulo": "Entrega del prompt seleccionado",
+            "fuente": "guia_visual.md",
+            "numero_chunk": 7,
+            "tipo_documento": "guia"
+          },
+          "distancia": 0.5757460594177246
+        },
+        {
+          "id": "VIS-03",
+          "text": "Viaje individual\nPara una campaña de pasajes aéreos y perfil autorizado de una persona de unos treinta años que viaja sola, presenta una escena de aeropuerto con equipaje de mano y luz de mañana. Encadra a media distancia, deja visibles las señales espaciales y conserva el tercio derecho libre. Si la campaña solo cubre alojamiento, cambia el aeropuerto por el vestíbulo de un hotel. Evita destinos o servicios sin respaldo comercial.",
+          "metadata": {
+            "version": "1.0",
+            "numero_chunk": 3,
+            "categoria": "visual",
+            "fuente": "guia_visual.md",
+            "titulo": "Viaje individual",
+            "tipo_documento": "guia"
+          },
+          "distancia": 0.6814490556716919
+        },
+        {
+          "id": "VIS-06",
+          "text": "Tecnología y movilidad\nPara audio, utiliza el producto participante como protagonista, con iluminación lateral suave y un fondo limpio. Para gasolina, muestra una estación ficticia con señalética neutra y sin precios visibles. Para cuotas, evita imágenes de dinero en efectivo o documentos que puedan sugerir aprobación de un préstamo. La escena debe comunicar el objeto de la promoción sin ampliar su alcance.",
+          "metadata": {
+            "categoria": "visual",
+            "numero_chunk": 6,
+            "version": "1.0",
+            "tipo_documento": "guia",
+            "titulo": "Tecnología y movilidad",
+            "fuente": "guia_visual.md"
+          },
+          "distancia": 0.7363028526306152
+        }
+      ],
+      "respuesta": "DIRECTRIZ\n\nLa cabecera del correo tiene una relación de aspecto horizontal de **3:2**. El **tercio derecho** queda libre para la composición posterior. [VIS-01, guia_visual.md]",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Qué relación de aspecto tiene la cabecera del correo y qué tercio queda libre?",
+          "categoria": "visual",
+          "ids": [
+            "VIS-01",
+            "VIS-07",
+            "VIS-03",
+            "VIS-06"
+          ],
+          "distancias": [
+            0.3215458393096924,
+            0.5757460594177246,
+            0.6814490556716919,
+            0.7363028526306152
+          ]
+        }
+      ],
+      "evaluacion": "parcial",
+      "justificacion": "Coinciden 2/2 criterios de contenido. Revisar la respuesta y su cita.",
+      "objetivo": "VIS-01"
+    },
+    {
+      "caso": "Información ausente",
+      "pregunta": "¿Cuántas millas aéreas de cortesía recibe un cliente por cada hora de retraso de su vuelo? Indica la cantidad exacta.",
+      "filtro": null,
+      "fragmentos": [
+        {
+          "id": "MAN-12",
+          "text": "Campañas de viajes\nCriterio institucional\nDistingue reserva, compra y fecha de viaje. Indica qué hito debe ocurrir en el periodo de\nla campaña y qué servicios incluye el beneficio.\nAplicación en el correo\nEl contexto de aeropuertos, hoteles o terminales puede orientar el tono. Evita prometer\npasajes, equipaje, desayunos o destinos que no figuran en la ficha.\nCaso de Marketing\nUna persona de 30 años viaja sola y recibe una propuesta para hotel. Su perfil autoriza\npersonalización visual. La ficha cubre alojamiento estándar.\nRedacción de referencia\nAsunto sugerido: Un beneficio para tu próxima estadía. En la escena, una persona\nconsulta una reserva en el vestíbulo de un hotel.\nControl de aprobación\nMantén el alojamiento en primer plano. Una imagen de embarque podría sugerir que los\npasajes están incluidos.",
+          "metadata": {
+            "pagina": 14,
+            "numero_chunk": 12,
+            "titulo": "Campañas de viajes",
+            "version": "1.0",
+            "categoria": "comunicacion",
+            "fuente": "manual_comunicacion.pdf",
+            "tipo_documento": "manual"
+          },
+          "distancia": 0.5935653448104858
+        },
+        {
+          "id": "MAN-21",
+          "text": "Correo de muestra: hotel en noviembre\nCriterio institucional\nExpediente de práctica para una compra de alojamiento. El perfil pertenece al segmento\nPreferente y cuenta con Crédito Horizonte. La personalización de texto está autorizada.\nLa versión final debe ser comprensible aunque el destinatario no haya leído otras\npropuestas.\nAplicación en el correo\nLa ficha LLM-33 del ejercicio cubre alojamiento estándar en Posada Demo Lumbre en\nnoviembre de 2026. El caso se usa para distinguir el beneficio de habitación de cualquier\nservicio de alimentación o transporte.\nCaso de Marketing\nMarketing eligió la versión que abre con el comercio y la ocasión de viaje. La revisión\ndetectó que un borrador anterior anunciaba desayuno incluido. La ficha excluye\nalimentación y traslados, por lo que la mención se retiró.\nRedacción de referencia\nAsunto: Una escapada a Posada Demo Lumbre. Hola, Alma. Del 1 al 30 de\nnoviembre de 2026, obtén 20 % de descuento al pagar presencialmente en Perú\nuna estadía estándar desde S/ 300 con tu Crédito Horizonte. Ahorro máximo de S/\n100. Se excluyen alimentación y traslados. Una aplicación por cliente adulto, sin\nacumulación. Cupo total de 100 beneficios, sujeto a disponibilidad. Consulta las\ncondiciones de la campaña.\nControl de aprobación\nPieza sintética de revisión. Si cambia el periodo o el producto de pago, prepara una\nnueva versión basada en la ficha correspondiente.",
+          "metadata": {
+            "categoria": "comunicacion",
+            "titulo": "Correo de muestra: hotel en noviembre",
+            "fuente": "manual_comunicacion.pdf",
+            "version": "1.0",
+            "pagina": 23,
+            "numero_chunk": 21,
+            "tipo_documento": "manual"
+          },
+          "distancia": 0.6406981945037842
+        },
+        {
+          "id": "VIS-03",
+          "text": "Viaje individual\nPara una campaña de pasajes aéreos y perfil autorizado de una persona de unos treinta años que viaja sola, presenta una escena de aeropuerto con equipaje de mano y luz de mañana. Encadra a media distancia, deja visibles las señales espaciales y conserva el tercio derecho libre. Si la campaña solo cubre alojamiento, cambia el aeropuerto por el vestíbulo de un hotel. Evita destinos o servicios sin respaldo comercial.",
+          "metadata": {
+            "version": "1.0",
+            "numero_chunk": 3,
+            "fuente": "guia_visual.md",
+            "titulo": "Viaje individual",
+            "tipo_documento": "guia",
+            "categoria": "visual"
+          },
+          "distancia": 0.6442830562591553
+        },
+        {
+          "id": "MAN-08",
+          "text": "Descuento de monto fijo\nCriterio institucional\nExpresa los montos en soles con S/ y un espacio. Para un beneficio fijo, indica monto,\ncompra mínima y número de aplicaciones según la ficha.\nAplicación en el correo\nAclara si el ahorro se aplica al pagar o mediante devolución posterior. Si la ficha omite el\nmecanismo, conserva una formulación neutra y pregunta antes de prometer un abono.\nCaso de Marketing\nUna campaña sintética ofrece S/ 20 de descuento desde S/ 120. El equipo propone\nllamarlo devolución inmediata, aunque la ficha solo describe el descuento.\nRedacción de referencia\nTexto sugerido: Obtén S/ 20 de descuento en consumos elegibles desde S/ 120\ndurante la vigencia indicada.\nControl de aprobación\nDescarta ejemplos que redondeen el consumo mínimo hacia abajo o prometan un abono\nen una fecha que la ficha no publica.",
+          "metadata": {
+            "fuente": "manual_comunicacion.pdf",
+            "numero_chunk": 8,
+            "pagina": 10,
+            "titulo": "Descuento de monto fijo",
+            "version": "1.0",
+            "tipo_documento": "manual",
+            "categoria": "comunicacion"
+          },
+          "distancia": 0.6656367778778076
+        }
+      ],
+      "respuesta": "INFORMACIÓN INSUFICIENTE\n\nLos fragmentos consultados no indican cuántas millas aéreas de cortesía recibe el cliente por cada hora de retraso. Se necesita la ficha comercial o directriz institucional que establezca esa cantidad exacta.",
+      "traza": [
+        {
+          "tool": "buscar_directrices",
+          "pregunta": "¿Cuántas millas aéreas de cortesía recibe un cliente por cada hora de retraso de su vuelo? Indica la cantidad exacta.",
+          "categoria": null,
+          "ids": [
+            "MAN-12",
+            "MAN-21",
+            "VIS-03",
+            "MAN-08"
+          ],
+          "distancias": [
+            0.5935653448104858,
+            0.6406981945037842,
+            0.6442830562591553,
+            0.6656367778778076
+          ]
+        }
+      ],
+      "evaluacion": "correcto",
+      "justificacion": "Reconoce la ausencia y no atribuye una cantidad de millas.",
+      "objetivo": null
+    }
+  ]
+}

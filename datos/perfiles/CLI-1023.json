@@ -1,0 +1,48 @@
+{
+  "client_id": "CLI-1023",
+  "nombre_completo": "Ximena del Sol",
+  "edad": 57,
+  "genero": "hombre",
+  "estado_civil": "sin dato",
+  "hijos": null,
+  "segmento": "Esencial",
+  "productos": [
+    "Crédito Brisa",
+    "Cuenta Sueldo"
+  ],
+  "afinidades": [
+    {
+      "prioridad": 1,
+      "categoria": "Supermercados",
+      "subcategorias": [
+        "Panadería",
+        "Despensa"
+      ]
+    },
+    {
+      "prioridad": 2,
+      "categoria": "Viajes",
+      "subcategorias": [
+        "Hoteles",
+        "Vuelos internacionales"
+      ]
+    },
+    {
+      "prioridad": 3,
+      "categoria": "Escolaridad",
+      "subcategorias": [
+        "Mochilas",
+        "Libros"
+      ]
+    }
+  ],
+  "permisos": {
+    "contacto_correo": true,
+    "personalizacion_texto": true,
+    "personalizacion_visual": false,
+    "atributos_visuales": []
+  },
+  "origen_afinidades": "Patrones de consumo simulados",
+  "fecha_corte": "2026-11-01",
+  "sintetico": true
+}
